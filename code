@@ -1,0 +1,25 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+void aralarinda_asal(int sayi1,int sayi2,bool *sonuc);
+int main() {
+	int a, b;
+	bool cevap;
+	cout << "sayi1-sayi2 girin :" << endl;
+	cin >> a >> b;
+	aralarinda_asal(a, b, &cevap);
+	cout << (cevap ? "Aralarinda asal" : "Aralarinda asal degil");	//temporary kullanıldı 1-0
+}
+void aralarinda_asal(int sayi1, int sayi2, bool* sonuc) {
+	//kucuk sayiyi bul.
+	int kucuk_sayi = sayi1;		//önce bunu en kucuk varsayalim
+	if (sayi2 < kucuk_sayi) kucuk_sayi = sayi2;
+	*sonuc = 1;		//sayi1 sayi2 aralarında asal kabul edelim
+	for (int i = 2;i < kucuk_sayi;i++) {
+		//bir tane ortak böleninin olması aralarında asal olmadığını gösterir.
+		if ((sayi1 % i == 0) && (sayi2 % i == 0)) {
+			*sonuc = 0;
+		}//if
+	}//for
+}
+//C++
